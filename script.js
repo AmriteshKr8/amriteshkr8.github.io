@@ -10,7 +10,7 @@ async function loadRepos() {
 
         card.innerHTML = `
             <h2>${repo.name}</h2>
-            <p>${repo.description || "No description available."}</p>
+            <p>${repo.description || "^~^"}</p>
             <a href="${repo.html_url}" target="_blank">GitHub Repo</a><br>
             ${repo.homepage ? `<a href="${repo.homepage}" target="_blank">Live Website</a>` : ""}
         `;
