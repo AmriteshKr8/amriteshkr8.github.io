@@ -35,6 +35,12 @@
     padding: 4px;
 }
 
+.repo-card > a{
+    color: #ccc;
+    padding: 4px;
+    text-decoration: none;
+}
+
 .div1 {
     grid-area: 1 / 1 / 2 / 2;
     background-color: #e5e5f7;

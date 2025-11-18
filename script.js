@@ -9,10 +9,10 @@ async function loadRepos() {
         card.className = "repo-card";
 
         card.innerHTML = `
+            <a href="${repo.html_url}" target="_blank">
             <h2>${repo.name}</h2>
             <p>${repo.description || "^~^"}</p>
-            <a href="${repo.html_url}" target="_blank">GitHub Repo</a><br>
-            ${repo.homepage ? `<a href="${repo.homepage}" target="_blank">Live Website</a>` : ""}
+            </a>
         `;
 
         container.appendChild(card);
@@ -20,3 +20,4 @@ async function loadRepos() {
 }
 
 window.addEventListener("DOMContentLoaded", loadRepos);
+//${repo.homepage ? `<a href="${repo.homepage}" target="_blank">Live Website</a>` : ""}
