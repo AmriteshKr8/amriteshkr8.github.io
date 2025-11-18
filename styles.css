@@ -15,32 +15,6 @@
     overflow-y: scroll;
 }
 
-.repo-card{
-    border-color: #ccc;
-    border-width: 4px;
-    background-color: #333;
-    z-index: -1;
-    padding: 2px;
-    margin-bottom: 2px;
-}
-
-.repo-card > h2{
-    color: #e5e5f7;
-    padding: 0%;
-    margin: 0%;
-}
-
-.repo-card > p{
-    color: #ccc;
-    padding: 4px;
-}
-
-.repo-card > a{
-    color: #ccc;
-    padding: 4px;
-    text-decoration: none;
-}
-
 .div1 {
     grid-area: 1 / 1 / 2 / 2;
     background-color: #e5e5f7;

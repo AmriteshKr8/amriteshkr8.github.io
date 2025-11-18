@@ -7,12 +7,18 @@ async function loadRepos() {
     repos.forEach(repo => {
         const card = document.createElement("div");
         card.className = "repo-card";
+        let page = "";
+        if(repo.homepage !== null){
+            page = repo.homepage;
+        } else if (repo.has_pages){
+            page = `https://amriteshkr8.github.io/${repo.name}`;
+        }
 
         card.innerHTML = `
-            <a href="${repo.html_url}" target="_blank">
             <h2>${repo.name}</h2>
             <p>${repo.description || "^~^"}</p>
-            </a>
+            <a href="${repo.html_url}" target="_blank"></a>
+            ${(page !== "") ? `<a href="${page}" target="_blank">Live Website</a>` : ""}
         `;
 
         container.appendChild(card);
@@ -20,4 +26,3 @@ async function loadRepos() {
 }
 
 window.addEventListener("DOMContentLoaded", loadRepos);
-//${repo.homepage ? `<a href="${repo.homepage}" target="_blank">Live Website</a>` : ""}
