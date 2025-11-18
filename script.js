@@ -1,7 +1,8 @@
 async function loadRepos() {
     const res = await fetch("data/repos.json");
     console.log(res);
-    const repos = await res.json(); 
+    const repos = await res.json();
+    console.log(repos.length);
     const container = document.getElementById("div2");
 /*
     repos.forEach(repo => {
