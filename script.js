@@ -1,5 +1,5 @@
 async function loadRepos() {
-    const res = await fetch("data/repos.json");
+    const res = await fetch("/data/repos.json");
     console.log(res);
     const repos = await res.json();
     console.log(repos.length);
