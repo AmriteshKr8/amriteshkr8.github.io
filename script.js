@@ -1,21 +1,23 @@
-const res = fetch("data/repos.json");
-const repos = res.json();
+async function loadRepos() {
 
-repos.forEach(e => {
-    console.log(e.name);
-});
+    const res = await fetch("data/repos.json");
+    const repos = await res.json();
 
-const container = document.getElementById("div2");
-repos.forEach(repo => {
-    const card = document.createElement("div");
-    card.className = "repo-card";
+    const container = document.getElementById("div2");
 
-    card.innerHTML = `
-        <h2>${repo.name}</h2>
-        <p>${repo.description ?? "No description available."}</p>
-        <a href="${repo.html_url}" target="_blank">GitHub Repo</a><br>
-        ${repo.homepage ? `<a href="${repo.homepage}" target="_blank">Live Website</a>` : ""}
-    `;
+    repos.forEach(repo => {
+        const card = document.createElement("div");
+        card.className = "repo-card";
 
-    container.appendChild(card);
-});
+        card.innerHTML = `
+            <h2>${repo.name}</h2>
+            <p>${repo.description ?? "No description available."}</p>
+            <a href="${repo.html_url}" target="_blank">GitHub Repo</a><br>
+            ${repo.homepage ? `<a href="${repo.homepage}" target="_blank">Live Website</a>` : ""}
+        `;
+
+        container.appendChild(card);
+    });
+}
+
+window.addEventListener("DOMContentLoaded", loadRepos);
