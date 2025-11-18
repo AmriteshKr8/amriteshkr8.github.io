@@ -1,7 +1,6 @@
 async function loadRepos() {
-
     const res = await fetch("data/repos.json");
-    const repos = await res.json();
+    const repos = await res.json(); 
 
     const container = document.getElementById("div2");
 
@@ -11,7 +10,7 @@ async function loadRepos() {
 
         card.innerHTML = `
             <h2>${repo.name}</h2>
-            <p>${repo.description ?? "No description available."}</p>
+            <p>${repo.description || "No description available."}</p>
             <a href="${repo.html_url}" target="_blank">GitHub Repo</a><br>
             ${repo.homepage ? `<a href="${repo.homepage}" target="_blank">Live Website</a>` : ""}
         `;
