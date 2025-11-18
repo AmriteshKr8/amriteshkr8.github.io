@@ -1,9 +1,9 @@
 async function loadRepos() {
     const res = await fetch("data/repos.json");
+    console.log(res);
     const repos = await res.json(); 
-
     const container = document.getElementById("div2");
-
+/*
     repos.forEach(repo => {
         const card = document.createElement("div");
         card.className = "repo-card";
@@ -17,6 +17,7 @@ async function loadRepos() {
 
         container.appendChild(card);
     });
+*/
 }
 
 window.addEventListener("DOMContentLoaded", loadRepos);
