@@ -1,0 +1,34 @@
+name: Update Repo Cache
+
+on:
+  schedule:
+    - cron: "*/15 * * * *"   # every 15 minutes
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Fetch GitHub Repo Data
+        run: |
+          curl -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+               "https://api.github.com/users/amriteshkr8/repos?per_page=100&type=owner&sort=updated" \
+               > data/repos.json
+
+      - name: Format JSON
+        run: |
+          sudo apt-get install jq -y
+          cat data/repos.json | jq '.' > data/repos.pretty.json
+          mv data/repos.pretty.json data/repos.json
+
+      - name: Commit updated repos.json
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add data/repos.json
+          git commit -m "Update repo cache (auto)" || echo "No changes"
+          git push
